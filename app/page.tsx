@@ -45,7 +45,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col relative overflow-hidden bg-[#0f1117] text-white">
       {/* Loading Overlay */}
       {isLoading && (
-        <div className="absolute inset-0 z-50 bg-black/80 flex flex-col items-center justify-center backdrop-blur-sm">
+        <div className="fixed inset-0 z-[100] bg-black/80 flex flex-col items-center justify-center backdrop-blur-sm">
           <Loader2 className="w-12 h-12 text-[#e50914] animate-spin mb-4" />
           <p className="text-xl font-bold animate-pulse text-white">AI가 대본을 분석 중입니다...</p>
         </div>
@@ -53,7 +53,7 @@ export default function Home() {
 
       {/* Success Modal */}
       {showSuccess && (
-        <div className="absolute inset-0 z-50 bg-black/80 flex items-center justify-center backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center backdrop-blur-sm p-4">
           <div className="bg-[#15171e] border border-slate-800 p-8 rounded-2xl max-w-md w-full relative shadow-2xl animate-in fade-in zoom-in duration-300">
             <button
               onClick={() => setShowSuccess(false)}

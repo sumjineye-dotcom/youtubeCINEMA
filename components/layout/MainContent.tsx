@@ -84,6 +84,7 @@ export default function MainContent({ value, onChange }: MainContentProps) {
             onDragLeave={handleDragLeave}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
+            onMouseLeave={() => setIsDragging(false)}
         >
             <div className="flex justify-between items-center mb-2 px-1">
                 <h3 className="text-sm font-semibold text-slate-400">대본 / 시나리오 입력</h3>
