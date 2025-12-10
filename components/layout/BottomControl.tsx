@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { MonitorPlay, Clapperboard, Film, ScrollText, Image as ImageIcon, Box } from "lucide-react";
+import { MonitorPlay, Clapperboard, ScrollText, Image as ImageIcon, Box } from "lucide-react";
 import {
     Select,
     SelectContent,

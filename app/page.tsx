@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { MoveRight, Loader2 } from "lucide-react";
 import Header from "@/components/layout/Header";
 import MainContent from "@/components/layout/MainContent";
