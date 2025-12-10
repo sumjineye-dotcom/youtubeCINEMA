@@ -14,14 +14,27 @@ export default function MainContent({ value, onChange }: MainContentProps) {
     const [isDragging, setIsDragging] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const handleDragOver = (e: React.DragEvent) => {
+    const handleDragEnter = (e: React.DragEvent) => {
         e.preventDefault();
+        e.stopPropagation();
         setIsDragging(true);
     };
 
     const handleDragLeave = (e: React.DragEvent) => {
         e.preventDefault();
+        e.stopPropagation();
+
+        // Only set dragging to false if we are leaving the main container
+        // Use relatedTarget to check if we moved to a child element
+        if (e.currentTarget.contains(e.relatedTarget as Node)) {
+            return;
+        }
         setIsDragging(false);
+    };
+
+    const handleDragOver = (e: React.DragEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
     };
 
     const readFile = (file: File) => {
@@ -41,6 +54,7 @@ export default function MainContent({ value, onChange }: MainContentProps) {
 
     const handleDrop = (e: React.DragEvent) => {
         e.preventDefault();
+        e.stopPropagation();
         setIsDragging(false);
 
         if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
@@ -66,8 +80,9 @@ export default function MainContent({ value, onChange }: MainContentProps) {
                 "w-full bg-[#15171e] border rounded-xl p-4 flex flex-col relative h-[300px] shadow-sm transition-all duration-200",
                 isDragging ? "border-[#e50914] bg-[#e50914]/5 ring-2 ring-[#e50914]/20" : "border-slate-800"
             )}
-            onDragOver={handleDragOver}
+            onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
+            onDragOver={handleDragOver}
             onDrop={handleDrop}
         >
             <div className="flex justify-between items-center mb-2 px-1">
@@ -103,7 +118,7 @@ export default function MainContent({ value, onChange }: MainContentProps) {
 
                 {/* Visual overlay when dragging */}
                 {isDragging && (
-                    <div className="absolute inset-0 z-10 bg-[#0f1117]/90 flex flex-col items-center justify-center rounded-md border-2 border-dashed border-[#e50914]">
+                    <div className="absolute inset-0 z-10 bg-[#0f1117]/90 flex flex-col items-center justify-center rounded-md border-2 border-dashed border-[#e50914] pointer-events-none">
                         <FileText className="w-12 h-12 text-[#e50914] mb-2 animate-bounce" />
                         <p className="text-lg font-bold text-white">파일을 여기에 놓으세요</p>
                         <p className="text-sm text-slate-400">.txt 파일만 지원됩니다</p>

@@ -17,6 +17,11 @@ export default function Home() {
 
   // Handlers
   const handleGenerate = () => {
+    if (!script.trim()) {
+      alert("대본을 입력해주세요!");
+      return;
+    }
+
     setIsLoading(true);
 
     // Simulate API call
@@ -30,6 +35,7 @@ export default function Home() {
         sceneCount: sceneCount[0]
       });
       setIsLoading(false);
+      alert(`분석이 완료되었습니다!\n\n[설정 정보]\n스타일: ${selectedStyle}\n비율: ${ratio}\n씬: ${sceneCount[0]}컷`);
     }, 3000);
   };
 
