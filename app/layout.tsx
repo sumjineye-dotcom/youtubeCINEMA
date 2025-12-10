@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "김부장의 AI 씨네보드",
+  title: "오후의 AI 시네보드",
   description: "AI Video Storyboard Generator",
 };
 

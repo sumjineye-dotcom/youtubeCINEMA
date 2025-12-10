@@ -20,7 +20,7 @@ export default function Header() {
                         <Clapperboard className="text-white w-5 h-5" />
                     </div>
                     <span className="font-bold text-lg tracking-tight text-white">
-                        김부장의 AI 씨네보드
+                        오후의 AI 시네보드
                     </span>
                 </div>
 
