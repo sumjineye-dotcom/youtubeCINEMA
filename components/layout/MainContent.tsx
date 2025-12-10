@@ -105,6 +105,7 @@ export default function MainContent({ value, onChange }: MainContentProps) {
                     placeholder="씬 설명과 등장인물에 대한 설명, 액션에 대한 내용을 입력해주세요."
                     value={value}
                     onChange={(e) => onChange(e.target.value)}
+                    spellCheck={false}
                 />
 
                 {/* Floating Upload Icon */}
